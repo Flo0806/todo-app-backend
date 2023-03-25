@@ -25,8 +25,6 @@ export class TodoController {
 
   @Post()
   async insertTodo(@Body() todo: Todo) {
-    console.log(todo);
-
     return await this.todoService.insertTodo(todo);
   }
 

@@ -44,14 +44,18 @@ export class TodoService {
   }
 
   async getTodos() {
-    const result = await this.todoModel.find().exec();
+    try {
+      const result = await this.todoModel.find().exec();
 
-    return result.map((todo) => ({
-      id: todo.id,
-      title: todo.title,
-      description: todo.description,
-      done: todo.done,
-    }));
+      return result.map((todo) => ({
+        id: todo.id,
+        title: todo.title,
+        description: todo.description,
+        done: todo.done,
+      }));
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   async deleteTodo(id: string) {
